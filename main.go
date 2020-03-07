@@ -14,11 +14,25 @@ func main() {
 
 		packetData, err := hex.DecodeString(os.Args[1])
 
+		fmt.Println("Raw Data:")
+		for i := 0; i < len(packetData); i++ {
+			fmt.Printf("%02X", packetData[i])
+
+			if (i+1)%16 == 0 {
+				fmt.Printf("\n")
+			} else {
+				fmt.Printf(" ")
+			}
+		}
+
+		fmt.Printf("\n\n")
+
 		if err != nil {
 			log.Fatal(err)
 		}
 		packet := gopacket.NewPacket(packetData, layers.LayerTypeEthernet, gopacket.Default)
 
+		fmt.Println("Decoded Packet:")
 		fmt.Println(packet)
 	} else {
 		fmt.Printf("Usage: %s <byte string>\n", os.Args[0])
