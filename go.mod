@@ -1,4 +1,4 @@
-module github.com/ezchi/go-string2gkt
+module github.com/ezchi/go-string2pkt
 
 go 1.14
 
